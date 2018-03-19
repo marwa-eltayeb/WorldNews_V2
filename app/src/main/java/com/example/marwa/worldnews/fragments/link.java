@@ -33,7 +33,7 @@ public class link {
     final static String KEY = "37b5b5aa-d7fb-4219-b589-3e1af665cfff";
 
     // Sections
-    final static String NEWS = "news";
+    final static String NEWS = "world";
     final static String SPORT = "sport";
     final static String CULTURE = "culture";
     final static String TECHNOLOGY = "technology";
