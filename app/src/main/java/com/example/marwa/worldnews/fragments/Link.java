@@ -1,10 +1,6 @@
 package com.example.marwa.worldnews.fragments;
 
-/**
- * Created by Marwa on 3/14/2018.
- */
-
-public class link {
+class Link {
 
     /**
      * URL for News data from the Guardian.

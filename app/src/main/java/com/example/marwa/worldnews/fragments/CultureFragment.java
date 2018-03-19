@@ -29,8 +29,6 @@ import com.example.marwa.worldnews.adapters.NewsAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.marwa.worldnews.fragments.link.NEWS_LOADER_ID;
-
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -106,7 +104,7 @@ public class CultureFragment extends Fragment implements LoaderManager.LoaderCal
             LoaderManager loaderManager = getLoaderManager();
             // Initialize the loader. Pass in the int ID constant defined above and pass in null for
             // the bundle. Pass in this activity for the LoaderCallbacks parameter.
-            loaderManager.initLoader(link.NEWS_LOADER_ID, null, this);
+            loaderManager.initLoader(Link.NEWS_LOADER_ID, null, this);
         } else {
             // Update empty state with no connection error message
             emptyStateTextView.setText(R.string.no_internet_connection);
@@ -135,18 +133,18 @@ public class CultureFragment extends Fragment implements LoaderManager.LoaderCal
                 getString(R.string.date_default));
 
         // parse breaks apart the URI string that's passed into its parameter
-        Uri baseUri = Uri.parse(link.NEWS_REQUEST_URL);
+        Uri baseUri = Uri.parse(Link.NEWS_REQUEST_URL);
         // buildUpon prepares the baseUri that we just parsed so we can add query parameters to it
         Uri.Builder uriBuilder = baseUri.buildUpon();
 
         // Append query parameter and its value.
-        uriBuilder.appendQueryParameter(link.PARAM_QUERY, country);
-        uriBuilder.appendQueryParameter(link.PARAM_SECTION, link.CULTURE);
-        uriBuilder.appendQueryParameter(link.PARAM_SHOW_TAGS, link.AUTHOR);
-        uriBuilder.appendQueryParameter(link.PARAM_SHOW_FIELDS, link.PIC_DIS);
-        uriBuilder.appendQueryParameter(link.PARAM_PAGE_SIZE, link.SIZE);
-        uriBuilder.appendQueryParameter(link.PARAM_ORDER_BY, date);
-        uriBuilder.appendQueryParameter(link.PARAM_API_KEY, link.KEY);
+        uriBuilder.appendQueryParameter(Link.PARAM_QUERY, country);
+        uriBuilder.appendQueryParameter(Link.PARAM_SECTION, Link.CULTURE);
+        uriBuilder.appendQueryParameter(Link.PARAM_SHOW_TAGS, Link.AUTHOR);
+        uriBuilder.appendQueryParameter(Link.PARAM_SHOW_FIELDS, Link.PIC_DIS);
+        uriBuilder.appendQueryParameter(Link.PARAM_PAGE_SIZE, Link.SIZE);
+        uriBuilder.appendQueryParameter(Link.PARAM_ORDER_BY, date);
+        uriBuilder.appendQueryParameter(Link.PARAM_API_KEY, Link.KEY);
 
         // Return the completed uri
         return new NewsLoader(getContext(), uriBuilder.toString());
@@ -188,7 +186,7 @@ public class CultureFragment extends Fragment implements LoaderManager.LoaderCal
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         //Restart the loader when we get back to the MainActivity
-        getLoaderManager().restartLoader(NEWS_LOADER_ID, null, this);
+        getLoaderManager().restartLoader(Link.NEWS_LOADER_ID, null, this);
     }
 
 }
